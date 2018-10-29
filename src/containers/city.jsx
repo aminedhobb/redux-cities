@@ -12,7 +12,7 @@ class City extends Component {
   render() {
     let cityClass = "list-group-item";
     if (this.props.city === this.props.selectedCity) {
-      cityClass += " activia";
+      cityClass += " selected";
     }
     return(
       <div className={cityClass} onClick={this.handleClick}>
