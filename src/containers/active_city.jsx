@@ -6,33 +6,22 @@ class ActiveCity extends Component {
 
   render() {
 
-    let style = {
-      backgroundImage: 'url(https://kitt.lewagon.com/placeholder/cities/paris',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      height: '100vh'
-    };
+    if (!this.props.selectedCity) {
+      return (
+        <div className="active-city">
+          <p>Select a city...</p>
+        </div>
+      );
+    }
 
-    let name = 'Paris';
-    let address = '16 villa Gaudelet, 75011 Paris';
+    const url = `https://kitt.lewagon.com/placeholder/cities/${this.props.selectedCity.slug}`;
 
-    if (this.props.selectedCity) {
-      style = {
-        backgroundImage: `url(https://kitt.lewagon.com/placeholder/cities/${this.props.selectedCity.slug})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh'
-      };
-      name = this.props.selectedCity.name;
-      address = this.props.selectedCity.address;
-    };
 
     return(
       <div className="active-city">
-        <h2>{name}</h2>
-        <p>{address}</p>
-        <div style={style}>
-        </div>
+        <h3>{this.props.selectedCity.name}</h3>
+        <p>{this.props.selectedCity.address}</p>
+        <img src={url} width="100%" />
       </div>
     );
   }
